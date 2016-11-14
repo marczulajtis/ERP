@@ -1,0 +1,5 @@
+c:\Users\mulan\documents\visual studio 2015\Projects\ERP\ERP.Common\bin\Debug\ERP.Common.dll
+c:\Users\mulan\documents\visual studio 2015\Projects\ERP\ERP.Common\bin\Debug\ERP.Common.pdb
+c:\Users\mulan\documents\visual studio 2015\Projects\ERP\ERP.Common\obj\Debug\ERP.Common.csprojResolveAssemblyReference.cache
+c:\Users\mulan\documents\visual studio 2015\Projects\ERP\ERP.Common\obj\Debug\ERP.Common.dll
+c:\Users\mulan\documents\visual studio 2015\Projects\ERP\ERP.Common\obj\Debug\ERP.Common.pdb
