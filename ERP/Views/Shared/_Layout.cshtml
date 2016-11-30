@@ -1,0 +1,29 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" type="text/css" />*@
+    @*<link href="~/Content/custom.css" rel="stylesheet" type="text/css" />*@
+    
+</head>
+<body>
+    
+    <div class="container body-content">
+        @RenderBody()
+        <div class="footer navbar-fixed-bottom center col-md-6">
+            <hr />
+            <p>&copy; @DateTime.Now.Year - GMS</p>
+        </div>
+    </div>
+
+    @Styles.Render("~/Content")
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
