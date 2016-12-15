@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace ERP.Common.Concrete
 {
-    public class EFDbContext
+    public class EFDbContext : DbContext
     {
+        public EFDbContext()
+            : base("ERPContextConnection")
+        { }
+
         public DbSet<User> Users { get; set; }
     }
 }

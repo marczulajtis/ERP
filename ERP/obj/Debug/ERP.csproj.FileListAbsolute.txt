@@ -55,3 +55,10 @@ C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\bin\EntityFramework
 C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\obj\Debug\ERP.csprojResolveAssemblyReference.cache
 C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\obj\Debug\ERP.dll
 C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\obj\Debug\ERP.pdb
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\bin\Ninject.dll
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\bin\Ninject.Web.Common.dll
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\bin\Ninject.Web.Mvc.dll
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\bin\WebActivatorEx.dll
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\bin\Ninject.xml
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\bin\Ninject.Web.Common.xml
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP\bin\Ninject.Web.Mvc.xml

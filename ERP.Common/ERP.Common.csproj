@@ -52,51 +52,55 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\EFDbContext.cs" />
-    <Compile Include="Concrete\StringCipher.cs" />
+    <Compile Include="Concrete\PasswordAuthentication.cs" />
+    <Compile Include="Entities\LoginUser.cs" />
+    <Compile Include="Entities\RegisterUser.cs" />
     <Compile Include="Models\Consts.cs" />
-    <Compile Include="Models\ERPModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ERPModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ERPModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ERPModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ERPModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ERPModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Models\ERP_Test.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP_Test.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ERP_Test.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP_Test.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ERP_Test.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP_Test.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>ERP_Test.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\PasswordValidator.cs" />
     <Compile Include="Validators\PhoneValidator.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="App.config" />
-    <EntityDeploy Include="Models\ERPModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ERPModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\ERPModel.edmx.diagram">
-      <DependentUpon>ERPModel.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
+    <Content Include="Models\ERP_Test.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERP_Test.edmx</DependentUpon>
+      <LastGenOutput>ERP_Test.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ERP_Test.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERP_Test.edmx</DependentUpon>
+      <LastGenOutput>ERP_Test.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\ERPModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ERPModel.edmx</DependentUpon>
-      <LastGenOutput>ERPModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ERPModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ERPModel.edmx</DependentUpon>
-      <LastGenOutput>ERPModel.cs</LastGenOutput>
-    </Content>
+    <None Include="App.config" />
+    <EntityDeploy Include="Models\ERP_Test.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ERP_Test.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ERP_Test.edmx.diagram">
+      <DependentUpon>ERP_Test.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

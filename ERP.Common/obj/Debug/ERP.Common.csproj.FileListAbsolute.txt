@@ -7,4 +7,3 @@ C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Common\bin\Debug\En
 C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Common\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Common\obj\Debug\ERP.Common.dll
 C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Common\obj\Debug\ERP.Common.pdb
-C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Common\obj\Debug\ERP.Common.csprojResolveAssemblyReference.cache

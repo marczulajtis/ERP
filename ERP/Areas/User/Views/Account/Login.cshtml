@@ -1,0 +1,23 @@
+﻿@model ERP.Common.Entities.LoginUser
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control input-sm has-success has-danger", placeholder = "User name" })
+        @Html.ValidationMessageFor(x => x.UserName)
+    </div>
+    <div class="form-group">
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control input-sm has-success has-danger", placeholder = "Password" })
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+    <div class="form-group center">
+        <input type="submit" value="Sign in" class="btn btn-primary" />
+    </div>
+}
+

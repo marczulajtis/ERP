@@ -1,0 +1,12 @@
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\bin\Debug\ERP.Comsole.Tests.exe.config
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\bin\Debug\ERP.Comsole.Tests.exe
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\bin\Debug\ERP.Comsole.Tests.pdb
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\bin\Debug\ERP.Common.dll
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\bin\Debug\ERP.Common.pdb
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\bin\Debug\EntityFramework.xml
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\obj\Debug\ERP.Comsole.Tests.csprojResolveAssemblyReference.cache
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\obj\Debug\ERP.Comsole.Tests.exe
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\obj\Debug\ERP.Comsole.Tests.pdb
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\bin\Debug\EntityFramework.dll
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mulan\Documents\Visual Studio 2015\Projects\ERP\ERP.Comsole.Tests\bin\Debug\EntityFramework.SqlServer.xml
