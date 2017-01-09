@@ -4,20 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Login", "Account", FormMethod.Post))
-{
-    @Html.ValidationSummary(true)
+<div class="login">
+    <h2>Login</h2>
 
-    <div class="form-group">
-        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control input-sm has-success has-danger", placeholder = "User name" })
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+
+    @using (Html.BeginForm("Login", "Account", new { area = "User" }, FormMethod.Post))
+    {
+        @Html.TextBoxFor(x => x.UserName, new { @class = "input-md", placeholder = "User name" })
         @Html.ValidationMessageFor(x => x.UserName)
-    </div>
-    <div class="form-group">
-        @Html.PasswordFor(x => x.Password, new { @class = "form-control input-sm has-success has-danger", placeholder = "Password" })
-        @Html.ValidationMessageFor(x => x.Password)
-    </div>
-    <div class="form-group center">
-        <input type="submit" value="Sign in" class="btn btn-primary" />
-    </div>
-}
 
+        @Html.PasswordFor(x => x.Password, new { @class = "input-md", placeholder = "Password" })
+        @Html.ValidationMessageFor(x => x.Password)
+        
+        <button type="submit" class="btn btn-primary btn-block btn-large"> Log in </button>
+    }
+    <br />
+    @Html.RouteLink("Forgot password?", "User_default", new { action = "ForgotPassword", controller = "Account" })
+</div>

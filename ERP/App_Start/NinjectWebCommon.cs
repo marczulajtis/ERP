@@ -11,6 +11,7 @@ namespace ERP.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Common.Concrete;
+    using Areas.User.Models;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -62,6 +63,7 @@ namespace ERP.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<EFDbContext>().ToSelf();
+            kernel.Bind<UserViewModel>().ToSelf();
         }        
     }
 }

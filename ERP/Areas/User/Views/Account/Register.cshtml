@@ -1,2 +1,32 @@
-﻿
+﻿@model ERP.Common.Entities.RegisterUser
+
 <h3>Register new user</h3>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control input-sm has-success has-danger", placeholder = "User name" })
+        @Html.ValidationMessageFor(x => x.UserName)
+    </div>
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Surname, new { @class = "form-control input-sm has-success has-danger", placeholder = "Surname" })
+        @Html.ValidationMessageFor(x => x.Surname)
+    </div>
+    <div class="form-group">
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control input-sm has-success has-danger", placeholder = "Password" })
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+    <div class="form-group">
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control input-sm has-success has-danger", placeholder = "Confirm password" })
+        @Html.ValidationMessageFor(x => x.ConfirmPassword)
+    </div>
+    <div class="form-group center">
+        <input type="submit" value="Sign in" class="btn btn-primary" />
+    </div>
+}

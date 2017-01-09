@@ -17,7 +17,14 @@ namespace ERP.Common.Entities
 
         [Required(ErrorMessage = "Password is required.")]
         [PasswordValidator(ErrorMessage = "Password must have at least one digit, one special character, one lower and upper case letter and must be 6 - 50 characters long.")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "Confirm password is required.")]
+        [DataType(DataType.Password)]
+        //[PasswordsMustMatchAttribute(Password, ConfirmPassword)]
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        public string ConfirmPassword { get; set; }
 
         public string Salt { get; set; }
 

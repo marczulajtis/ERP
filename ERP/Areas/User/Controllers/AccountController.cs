@@ -1,14 +1,24 @@
-﻿using ERP.Common.Entities;
+﻿using ERP.Areas.User.Models;
+using ERP.Common.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using UserEntity = ERP.Common.Entities.User;
+
 namespace ERP.Areas.User.Controllers
 {
     public class AccountController : Controller
     {
+        private UserViewModel viewModel;
+
+        public AccountController(UserViewModel vm)
+        {
+            this.viewModel = vm;
+        }
+
         public ActionResult Register()
         {
             return View();
@@ -27,16 +37,42 @@ namespace ERP.Areas.User.Controllers
         [HttpPost]
         public ActionResult Login(LoginUser user)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                TempData["ViewData"] = ViewData;
+                // validate user against database
+                if (this.viewModel.ValidateUserAgainstDatabase(user.UserName, user.Password))
+                {
+                    return View("Success", user);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Login failed. Please check your credentials and try again.");
 
-                return RedirectToAction("Index", "Home", new { area = "" });
+                    return View(user);
+                }
             }
 
-            // validate user against database
+            TempData["ViewData"] = ViewData;
 
-            return View("Success", user);
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(string userNameOrEmail)
+        {
+            if (ModelState.IsValid)
+            {
+                if (this.viewModel.SendPasswordResetLink(userNameOrEmail))
+                {
+                    return View("LinkSent");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "User with this name or email does not exist. Try again.");
+                }
+            }
+
+            return View();
         }
 
         public ActionResult Success()

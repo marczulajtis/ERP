@@ -1,20 +1,6 @@
-﻿@*@model ERP.Common.Entities.LoginUser*@
-
-@{
+﻿@{
     ViewBag.Title = "Gastronomy management system";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Gastronomy management system</h2>
-
-<div class="panel form-signin">
-    <div class="panel-heading">Login to your account</div>
-    <div class="panel-body">
-        <div class="col-md-9">
-            @Html.Partial("_Login")
-        </div>
-        <div class="col-md-4">
-            @Html.ActionLink("Forgot password?", "ForgotPassword")
-        </div>
-    </div>
-</div>
+@Html.Partial("~/Areas/User/Views/Account/Login.cshtml")
