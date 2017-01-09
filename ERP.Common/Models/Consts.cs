@@ -33,5 +33,11 @@ namespace ERP.Common.Models
         public static string SomethingWentWrongError = "Something went wrong. Please try again.";
 
         public const string UserDoesNotExistError = "User with this name or email does not exist. Please try again.";
+
+        public const string PasswordLinkExpiredError = "Password link expired.";
+
+        public const string PasswordChanged = "Your password has been changed";
+
+        public const string CouldNoChangePasswordError = "Something went wrong during your password change. Please try again.";
     }
 }

@@ -56,10 +56,11 @@
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EmailService.cs" />
     <Compile Include="Concrete\PasswordAuthentication.cs" />
-    <Compile Include="Helpers\MembershipHelper.cs" />
+    <Compile Include="Helpers\PasswordResetHelper.cs" />
     <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\Membership.cs" />
+    <Compile Include="Models\PasswordResetUser.cs" />
     <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Exceptions\UserException.cs" />
     <Compile Include="Helpers\ApplicationHelpers.cs" />

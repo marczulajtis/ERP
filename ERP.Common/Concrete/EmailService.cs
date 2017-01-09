@@ -21,11 +21,11 @@ namespace ERP.Common.Concrete
         public void SendResetEmail(User user)
         {
             string encryptedString = Encryption.Encrypt(string.Format("{0}&{1}",
-                user.UserName, DateTime.Now.AddMinutes(60).Ticks),
+                user.UserName, DateTime.Now.Ticks),
                 ConfigurationManager.AppSettings[AppSettings.EncryptionKey]);
 
             var passwordLink = ApplicationHelpers.GetBaseURL() +
-                "/User/Account/ResetPassword?digest=" + HttpUtility.UrlEncode(encryptedString);
+                "/User/Account/ResetPassword?userNameAndDate=" + HttpUtility.UrlEncode(encryptedString);
 
             var email = new MailMessage();
 

@@ -72,22 +72,26 @@ namespace ERP.Common.Concrete
 
         public static string Decrypt(string toDecrypt, string key)
         {
-            var des = new DESCryptoServiceProvider();
-            var ms = new MemoryStream();
+            if (toDecrypt != null)
+            {
+                var des = new DESCryptoServiceProvider();
+                var ms = new MemoryStream();
 
-            VerifyKey(ref key);
+                VerifyKey(ref key);
 
-            des.Key = HashKey(key, des.KeySize / 8);
-            des.IV = HashKey(key, des.KeySize / 8);
-            byte[] inputBytes = HttpServerUtility.UrlTokenDecode(toDecrypt);
+                des.Key = HashKey(key, des.KeySize / 8);
+                des.IV = HashKey(key, des.KeySize / 8);
+                byte[] inputBytes = HttpServerUtility.UrlTokenDecode(toDecrypt);
 
-            var cs = new CryptoStream(ms, des.CreateDecryptor(), CryptoStreamMode.Write);
-            cs.Write(inputBytes, 0, inputBytes.Length);
-            cs.FlushFinalBlock();
+                var cs = new CryptoStream(ms, des.CreateDecryptor(), CryptoStreamMode.Write);
+                cs.Write(inputBytes, 0, inputBytes.Length);
+                cs.FlushFinalBlock();
 
-            var encoding = Encoding.UTF8;
-            return encoding.GetString(ms.ToArray());
+                var encoding = Encoding.UTF8;
+                return encoding.GetString(ms.ToArray());
+            }
 
+            return string.Empty;
         }
 
         /// <summary>

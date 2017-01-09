@@ -2,6 +2,7 @@
 using ERP.Common.Concrete;
 using ERP.Common.Entities;
 using ERP.Common.Exceptions;
+using ERP.Common.Helpers;
 using ERP.Common.Models;
 using System;
 using System.Collections.Generic;
@@ -99,6 +100,62 @@ namespace ERP.Areas.User.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ResetPassword(string userNameAndDate)
+        {
+            if (this.viewModel.LetUserResetPassword(userNameAndDate))
+            {
+                PasswordReset reset = this.viewModel.GetPasswordResetDataFromLink(userNameAndDate);
+
+                EntityUser foundUser = this.context.Users.FirstOrDefault(x => x.UserName == reset.UserName);
+
+                TempData["CurrentUser"] = foundUser;
+
+                return View();
+            }
+            else
+            {
+                ModelState.AddModelError("", Consts.PasswordLinkExpiredError);
+
+                return View("Login");
+            }
+        }
+        
+        [HttpPost]
+        public ActionResult ResetPassword(PasswordResetUser user)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    EntityUser foundUser = (EntityUser)TempData["CurrentUser"];
+
+                    if (foundUser != null)
+                    {
+                        user.UserID = foundUser.UserID;
+                        user.UserName = foundUser.UserName;
+                    }
+
+                    if (this.viewModel.ResetUserPassword(user))
+                    {
+                        ViewBag.Success = Consts.PasswordChanged;
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", Consts.CouldNoChangePasswordError);
+                    }
+                }
+                
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", Consts.SomethingWentWrongError);
+
+                return View();
+            }
         }
 
         public ActionResult Success()

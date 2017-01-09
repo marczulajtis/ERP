@@ -1,6 +1,7 @@
 ﻿using ERP.Common.Concrete;
 using ERP.Common.Entities;
 using ERP.Common.Exceptions;
+using ERP.Common.Helpers;
 using ERP.Common.Models;
 using System;
 using System.Collections.Generic;
@@ -82,6 +83,41 @@ namespace ERP.Areas.User.Models
             }
         }
 
+        public bool ResetUserPassword(PasswordResetUser user)
+        {
+            if (user != null)
+            {
+                try
+                {
+                    UserEntity userToUpdate = this.context.Users.FirstOrDefault(x => x.UserID == user.UserID);
+
+                    // generate salt
+                    string salt = Encryption.GenerateSalt();
+
+                    // generate password hash
+                    string originalHash = Encryption.GenerateHash(salt, user.Password);
+
+                    if (userToUpdate != null)
+                    {
+                        userToUpdate.PasswordHash = originalHash;
+                        userToUpdate.Salt = salt;
+
+                        this.context.SaveChanges();
+
+                        return true;
+                    }
+
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("An exception occured while changin password for user." + user.UserName, ex);
+                }
+            }
+
+            return false;
+        }
+
         private UserEntity ConvertToDBUser(RegisterUser newUser)
         {
             return new UserEntity
@@ -121,6 +157,32 @@ namespace ERP.Areas.User.Models
             }
 
             return false;
+        }
+
+        public bool LetUserResetPassword(string linkArguments)
+        {
+            // get datetime now
+            DateTime now = DateTime.Now;
+
+            PasswordReset passwordResetModel = this.GetPasswordResetDataFromLink(linkArguments);
+
+            if ((passwordResetModel.LinkSentDate - now).Minutes < 15)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        public PasswordReset GetPasswordResetDataFromLink(string linkArguments)
+        {
+            // decrypt part of link
+            string nameAndTicks = PasswordResetHelper.GetArgumentValueFromLink(linkArguments);
+
+            // convert ticks to datetime 
+            return PasswordResetHelper.ValidateResetCode(nameAndTicks);
         }
     }
 }

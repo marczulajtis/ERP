@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ERP.Common.Models
 {
-    public class Membership
+    public class PasswordReset
     {
         public bool IsValid { get; set; }
 
         public string UserName { get; set; }
 
-        public DateTime ResetEmailExppirationDate { get; set; }
+        public DateTime LinkSentDate { get; set; }
     }
 }

@@ -30,9 +30,11 @@ namespace ERP.Comsole.Tests
 
             //EncryptDecryptPassword();
 
-            #region Encryption
+            //Console.WriteLine(Encryption.Decrypt("bhDN23qcPmCt-8-rtj4IqEfDb4cqa2Hgy42q3-mltco1", "encryptionkKey"));
+            
+                #region Encryption
 
-            Menu();
+                Menu();
 
             Console.WriteLine();
             Console.WriteLine("Please enter an option number : ");
