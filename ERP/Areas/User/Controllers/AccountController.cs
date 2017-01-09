@@ -6,8 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using UserEntity = ERP.Common.Entities.User;
-
 namespace ERP.Areas.User.Controllers
 {
     public class AccountController : Controller

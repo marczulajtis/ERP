@@ -1,5 +1,6 @@
 ﻿using ERP.Common.Concrete;
 using ERP.Common.Entities;
+using ERP.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -15,49 +16,64 @@ namespace ERP.Comsole.Tests
 
         static void Main(string[] args)
         {
-            int[] binaryArray = new int[] { 0, 1, 1, 0 };
+            SendPasswordResetEmail();
 
-            string binaryDigitString = string.Join("", binaryArray);
+            //int[] binaryArray = new int[] { 0, 1, 1, 0 };
 
-            long binaryDigit = Convert.ToInt64(binaryDigitString, 2);
+            //string binaryDigitString = string.Join("", binaryArray);
 
-            Console.WriteLine(binaryDigit);
+            //long binaryDigit = Convert.ToInt64(binaryDigitString, 2);
 
-            Console.ReadKey();
+            //Console.WriteLine(binaryDigit);
+
+            //Console.ReadKey();
 
             //EncryptDecryptPassword();
 
-            //#region Encryption
-            //Menu();
+            #region Encryption
 
-            //Console.WriteLine();
-            //Console.WriteLine("Please enter an option number : ");
-            //string option = Console.ReadLine();
-            //Console.WriteLine();
+            Menu();
 
-            //while (option != "3")
-            //{
-            //    switch (option)
-            //    {
-            //        case "1":
-            //            CreateNewUser();
-            //            break;
-            //        case "2":
-            //            RetrieveUser();
-            //            break;
-            //        case "3":
-            //            Console.ReadKey();
-            //            break;
-            //        default:
-            //            break;
-            //    }
+            Console.WriteLine();
+            Console.WriteLine("Please enter an option number : ");
+            string option = Console.ReadLine();
+            Console.WriteLine();
 
-            //    Console.WriteLine();
-            //    Console.WriteLine("Please enter an option number : ");
-            //    option = Console.ReadLine();
-            //    Console.WriteLine();
-            //}
-            //#endregion
+            while (option != "3")
+            {
+                switch (option)
+                {
+                    case "1":
+                        CreateNewUser();
+                        break;
+                    case "2":
+                        RetrieveUser();
+                        break;
+                    case "3":
+                        SendPasswordResetEmail();
+                        break;
+                    case "4":
+                        Console.ReadKey();
+                        break;
+                    default:
+                        break;
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Please enter an option number : ");
+                option = Console.ReadLine();
+                Console.WriteLine();
+            }
+            #endregion
+        }
+
+        private static void SendPasswordResetEmail()
+        {
+            User user = new User { UserName = "mulanecka", Email = "goforspammer@gmail.com" };
+
+            EmailService service = new EmailService();
+
+            service.SendResetEmail(user);
         }
 
         private static void RotateOrTransformString()
@@ -124,7 +140,8 @@ namespace ERP.Comsole.Tests
             Console.WriteLine("Select an option from menu:");
             Console.WriteLine("1: Create new user");
             Console.WriteLine("2: Get user from database");
-            Console.WriteLine("3: Exit");
+            Console.WriteLine("3: Send password reset email");
+            Console.WriteLine("4: Exit");
         }
 
         private static void RetrieveUser()
@@ -141,9 +158,9 @@ namespace ERP.Comsole.Tests
 
             if (retrivedUser != null)
             {
-                newHash = PasswordAuthentication.GenerateHash(retrivedUser.Salt, password);
+                newHash = Encryption.GenerateHash(retrivedUser.Salt, password);
 
-                if (PasswordAuthentication.CompareHashes(retrivedUser.PasswordHash, newHash))
+                if (Encryption.CompareHashes(retrivedUser.PasswordHash, newHash))
                 {
                     Console.WriteLine("You are now logged in!");
                 }
@@ -180,8 +197,8 @@ namespace ERP.Comsole.Tests
                 Console.WriteLine("Please enter phone number (optional):");
                 string phone = Console.ReadLine();
 
-                string salt = PasswordAuthentication.GenerateSalt();
-                string hash = PasswordAuthentication.GenerateHash(salt, password);
+                string salt = Encryption.GenerateSalt();
+                string hash = Encryption.GenerateHash(salt, password);
 
                 Console.WriteLine("Salt : {0}", salt);
                 Console.WriteLine("Pssword hash : {0}", hash);
@@ -233,9 +250,9 @@ namespace ERP.Comsole.Tests
             Console.WriteLine("Please enter a password to use:");
             string password = Console.ReadLine();
 
-            string salt = PasswordAuthentication.GenerateSalt();
+            string salt = Encryption.GenerateSalt();
 
-            string hash = PasswordAuthentication.GenerateHash(salt, password);
+            string hash = Encryption.GenerateHash(salt, password);
 
             Console.WriteLine("Your encrypted password : {0}", hash);
 
@@ -246,9 +263,9 @@ namespace ERP.Comsole.Tests
             Console.WriteLine("Please enter your password:");
             string newPassword = Console.ReadLine();
 
-            string newHash = PasswordAuthentication.GenerateHash(salt, newPassword);
+            string newHash = Encryption.GenerateHash(salt, newPassword);
 
-            bool passwordsMatch = PasswordAuthentication.CompareHashes(hash, newHash);
+            bool passwordsMatch = Encryption.CompareHashes(hash, newHash);
 
             if (passwordsMatch)
             {

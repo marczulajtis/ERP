@@ -1,12 +1,13 @@
 ﻿using ERP.Common.Concrete;
 using ERP.Common.Entities;
 using ERP.Common.Exceptions;
+using ERP.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using UserEntity = ERP.Common.Entities.User;
+using UserEntity = ERP.Common.Models.User;
 
 namespace ERP.Areas.User.Models
 {
@@ -27,9 +28,9 @@ namespace ERP.Areas.User.Models
 
                 if (foundUser != null)
                 {
-                    string hashToCompare = PasswordAuthentication.GenerateHash(foundUser.Salt, newPassword);
+                    string hashToCompare = Encryption.GenerateHash(foundUser.Salt, newPassword);
 
-                    if (PasswordAuthentication.CompareHashes(foundUser.PasswordHash, hashToCompare))
+                    if (Encryption.CompareHashes(foundUser.PasswordHash, hashToCompare))
                     {
                         return true;
                     }
@@ -62,10 +63,10 @@ namespace ERP.Areas.User.Models
                 if (newUser != null)
                 {
                     // generate salt
-                    string salt = PasswordAuthentication.GenerateSalt();
+                    string salt = Encryption.GenerateSalt();
 
                     // generate password hash
-                    string originalHash = PasswordAuthentication.GenerateHash(salt, newUser.Password);
+                    string originalHash = Encryption.GenerateHash(salt, newUser.Password);
 
                     // add new user to database
                     newUser.PasswordHash = originalHash;
@@ -110,7 +111,7 @@ namespace ERP.Areas.User.Models
 
         public bool SendPasswordResetLink(string userNameOrEmail)
         {
-            if (this.context.Users.FirstOrDefault(x => x.UserName == userNameOrEmail || x.Email == userNameOrEmail) != null)
+            if (context.Users.FirstOrDefault(x => x.UserName == userNameOrEmail || x.Email == userNameOrEmail) != null)
             {
                 //send link to user email to reset password
 

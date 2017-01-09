@@ -1,4 +1,5 @@
 ﻿using ERP.Common.Entities;
+using ERP.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
