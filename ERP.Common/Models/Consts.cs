@@ -27,5 +27,11 @@ namespace ERP.Common.Models
                 return new HashSet<char>() { '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '{', '}', '[', ']', '|', ';', ':', '"', '<', ',', '>', '.', '?' };
             }
         }
+
+        public static string PasswordResetLinkSent = "Password reset link has been sent.";
+
+        public static string SomethingWentWrongError = "Something went wrong. Please try again.";
+
+        public const string UserDoesNotExistError = "User with this name or email does not exist. Please try again.";
     }
 }

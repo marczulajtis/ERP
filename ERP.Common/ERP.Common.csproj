@@ -40,9 +40,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,12 +54,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\EFDbContext.cs" />
+    <Compile Include="Concrete\EmailService.cs" />
     <Compile Include="Concrete\PasswordAuthentication.cs" />
-    <Compile Include="Entities\LoginUser.cs" />
-    <Compile Include="Entities\RegisterUser.cs" />
+    <Compile Include="Helpers\MembershipHelper.cs" />
+    <Compile Include="Models\AppSettings.cs" />
+    <Compile Include="Models\LoginUser.cs" />
+    <Compile Include="Models\Membership.cs" />
+    <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Exceptions\UserException.cs" />
+    <Compile Include="Helpers\ApplicationHelpers.cs" />
     <Compile Include="Models\Consts.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Models\ERP_Test.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,6 +78,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ERP_Test.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>ERP_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>ERP_Test.tt</DependentUpon>

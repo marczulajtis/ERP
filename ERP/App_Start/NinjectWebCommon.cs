@@ -64,6 +64,7 @@ namespace ERP.App_Start
         {
             kernel.Bind<EFDbContext>().ToSelf();
             kernel.Bind<UserViewModel>().ToSelf();
+            kernel.Bind<EmailService>().ToSelf();
         }        
     }
 }

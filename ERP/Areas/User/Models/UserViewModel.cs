@@ -14,10 +14,12 @@ namespace ERP.Areas.User.Models
     public class UserViewModel
     {
         private EFDbContext context;
+        private EmailService emailService;
 
-        public UserViewModel(EFDbContext context)
+        public UserViewModel(EFDbContext context, EmailService emailService)
         {
             this.context = context;
+            this.emailService = emailService;
         }
 
         public bool ValidateUserAgainstDatabase(string userName, string newPassword)
@@ -46,14 +48,6 @@ namespace ERP.Areas.User.Models
             { 
                 throw new UserException("An exception occured while validating user against database.", ex);
             }
-            // retrieve salt
-            // retrieve original password hash
-
-            // generate new hash from given password
-
-            // compare two hashes
-
-            return false;
         }
 
         public bool RegisterNewUser(RegisterUser newUser)
@@ -109,13 +103,21 @@ namespace ERP.Areas.User.Models
             return new UserEntity();
         }
 
-        public bool SendPasswordResetLink(string userNameOrEmail)
+        public bool SendPasswordResetLink(UserEntity user)
         {
-            if (context.Users.FirstOrDefault(x => x.UserName == userNameOrEmail || x.Email == userNameOrEmail) != null)
+            if (context.Users.FirstOrDefault(x => x.UserName == user.UserName || x.Email == user.Email) != null)
             {
                 //send link to user email to reset password
+                try
+                {
+                    this.emailService.SendResetEmail(user);
 
-                return true;
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw new UserException("An error occured while reseting password. Please try again", ex);
+                }
             }
 
             return false;

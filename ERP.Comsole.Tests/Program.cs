@@ -16,7 +16,7 @@ namespace ERP.Comsole.Tests
 
         static void Main(string[] args)
         {
-            SendPasswordResetEmail();
+            //SendPasswordResetEmail();
 
             //int[] binaryArray = new int[] { 0, 1, 1, 0 };
 
