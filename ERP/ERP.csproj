@@ -170,6 +170,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\User\Views\web.config" />
     <Content Include="Areas\User\Views\Account\ResetPassword.cshtml" />
+    <Content Include="Areas\User\Views\Account\LogOut.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />

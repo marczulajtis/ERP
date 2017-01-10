@@ -162,5 +162,10 @@ namespace ERP.Areas.User.Controllers
         {
             return View();
         }
+
+        public ActionResult LogOut()
+        {
+            return View();
+        }
     }
 }
