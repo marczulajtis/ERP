@@ -23,5 +23,8 @@ namespace ERP.Common.Models
         public string Phone { get; set; }
         public string Salt { get; set; }
         public bool EmailConfirmed { get; set; }
+        public Nullable<int> RoleID { get; set; }
+    
+        public virtual Role Role { get; set; }
     }
 }

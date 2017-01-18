@@ -1,23 +1,23 @@
 ﻿using System.Web.Mvc;
 
-namespace ERP.Areas.User
+namespace ERP.Areas.Admin
 {
-    public class UserAreaRegistration : AreaRegistration 
+    public class AdminAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "User";
+                return "Admin";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "User_default",
-                "User/{controller}/{action}",
-                new { controller = "User", action = "Login" }
+                "Admin_default",
+                "Admin/{controller}/{action}/{id}",
+                new { action = "Index", id = UrlParameter.Optional }
             );
         }
     }

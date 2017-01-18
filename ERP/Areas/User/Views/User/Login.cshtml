@@ -10,7 +10,7 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
 
-    @using (Html.BeginForm("Login", "Account", new { area = "User" }, FormMethod.Post))
+    @using (Html.BeginForm("Login", "User", new { area = "User" }, FormMethod.Post))
     {
         @Html.TextBoxFor(x => x.UserName, new { @class = "input-md", placeholder = "User name" })
         @Html.ValidationMessageFor(x => x.UserName)
@@ -21,5 +21,5 @@
         <button type="submit" class="btn btn-primary btn-block btn-large"> Log in </button>
     }
     <br />
-    @Html.RouteLink("Forgot password?", "User_default", new { action = "ForgotPassword", controller = "Account" })
+    @Html.RouteLink("Forgot password?", "User_default", new { action = "ForgotPassword", controller = "User" })
 </div>

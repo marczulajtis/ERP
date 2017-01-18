@@ -1,4 +1,5 @@
 ﻿using ERP.Areas.User.Models;
+using ERP.Common.Attributes;
 using ERP.Common.Concrete;
 using ERP.Common.Entities;
 using ERP.Common.Exceptions;
@@ -9,24 +10,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using EntityUser = ERP.Common.Models.User;
 
 namespace ERP.Areas.User.Controllers
 {
-    public class AccountController : Controller
+    public class UserController : Controller
     {
         private UserViewModel viewModel;
         private EFDbContext context;
 
-        public AccountController(UserViewModel vm, EFDbContext context)
+        public UserController(UserViewModel vm, EFDbContext context)
         {
             this.viewModel = vm;
             this.context = context;
-        }
-
-        public ActionResult Register()
-        {
-            return View();
         }
 
         public ActionResult ForgotPassword()
@@ -47,6 +44,9 @@ namespace ERP.Areas.User.Controllers
                 // validate user against database
                 if (this.viewModel.ValidateUserAgainstDatabase(user.UserName, user.Password))
                 {
+                    // creating authentication key for user
+                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+
                     return View("Success", user);
                 }
                 else
@@ -158,6 +158,7 @@ namespace ERP.Areas.User.Controllers
             }
         }
 
+        [CustomAuthorize]
         public ActionResult Success()
         {
             return View();
@@ -165,6 +166,8 @@ namespace ERP.Areas.User.Controllers
 
         public ActionResult LogOut()
         {
+            FormsAuthentication.SignOut();
+
             return View();
         }
     }

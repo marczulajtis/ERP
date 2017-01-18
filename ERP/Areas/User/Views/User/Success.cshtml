@@ -1,0 +1,17 @@
+﻿@model ERP.Common.Entities.LoginUser
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.Action("ShowMenu", "Menu", new { area = "Menu" })
+            </div>
+            <div class="col-md-10 greeting-info">
+                @if (@Model != null)
+                {
+                    <p>Hello @Model.UserName !</p>
+                }
+            </div>
+        </div>

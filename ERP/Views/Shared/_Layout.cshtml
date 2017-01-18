@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 <body>    
     <div class="container body-content">
         @RenderBody()
         <div class="footer navbar-fixed-bottom center col-md-6">
-            <hr />
+            @*<hr />*@
             <p>&copy; @DateTime.Now.Year - GMS</p>
         </div>
     </div>

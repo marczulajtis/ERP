@@ -169,8 +169,10 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\User\Views\web.config" />
-    <Content Include="Areas\User\Views\Account\ResetPassword.cshtml" />
-    <Content Include="Areas\User\Views\Account\LogOut.cshtml" />
+    <Content Include="Areas\User\Views\User\ResetPassword.cshtml" />
+    <Content Include="Areas\User\Views\User\LogOut.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Menu\Views\web.config" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -178,17 +180,21 @@
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Areas\User\Views\Account\Success.cshtml" />
+    <Content Include="Areas\User\Views\User\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Menu\MenuAreaRegistration.cs" />
+    <Compile Include="Areas\Menu\Models\MenuSecurity.cs" />
     <Compile Include="Areas\User\Models\UserViewModel.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
-    <Compile Include="Areas\User\Controllers\AccountController.cs" />
+    <Compile Include="Areas\User\Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Areas\Menu\Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,12 +210,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
-    <Content Include="Areas\User\Views\Account\Login.cshtml" />
+    <Content Include="Areas\User\Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
-    <Content Include="Views\Menu\ShowMenu.cshtml" />
+    <Content Include="Areas\Menu\Views\Menu\ShowMenu.cshtml" />
     <Content Include="Views\Shared\_Register.cshtml" />
-    <Content Include="Areas\User\Views\Account\Register.cshtml" />
-    <Content Include="Areas\User\Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Register.cshtml" />
+    <Content Include="Areas\User\Views\User\ForgotPassword.cshtml" />
+    <Content Include="Views\Shared\_NotAuthorized.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -219,6 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Menu\Views\Shared\" />
     <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
