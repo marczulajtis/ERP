@@ -27,5 +27,6 @@ namespace ERP.Common.Models
     
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<InitialConfig> InitialConfigs { get; set; }
     }
 }

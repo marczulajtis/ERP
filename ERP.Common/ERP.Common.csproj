@@ -87,6 +87,9 @@
     <Compile Include="Concrete\PasswordAuthentication.cs" />
     <Compile Include="Helpers\PasswordResetHelper.cs" />
     <Compile Include="Models\AppSettings.cs" />
+    <Compile Include="Models\InitialConfig.cs">
+      <DependentUpon>ERP_Test.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\Membership.cs" />
     <Compile Include="Models\PasswordResetUser.cs" />

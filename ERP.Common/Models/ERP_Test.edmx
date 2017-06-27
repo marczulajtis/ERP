@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ERP_TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ERP_Test.dbo.InitialConfig' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="InitialConfig">
+          <Key>
+            <PropertyRef Name="InitialConfigID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="InitialConfigID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -42,6 +54,13 @@
         <EntityContainer Name="ERP_TestModelStoreContainer">
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InitialConfig" EntityType="Self.InitialConfig" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [InitialConfig].[InitialConfigID] AS [InitialConfigID], 
+    [InitialConfig].[Name] AS [Name], 
+    [InitialConfig].[Value] AS [Value]
+    FROM [dbo].[InitialConfig] AS [InitialConfig]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
@@ -74,6 +93,7 @@
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="InitialConfigs" EntityType="ERP_TestModel.InitialConfig" />
         </EntityContainer>
         <EntityType Name="Role">
           <Key>
@@ -95,6 +115,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="InitialConfig">
+          <Key>
+            <PropertyRef Name="InitialConfigID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="InitialConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -122,6 +152,15 @@
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InitialConfigs">
+            <EntityTypeMapping TypeName="ERP_TestModel.InitialConfig">
+              <MappingFragment StoreEntitySet="InitialConfig">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InitialConfigID" ColumnName="InitialConfigID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
