@@ -25,7 +25,7 @@ namespace ERP.Common.Concrete
                 ConfigurationManager.AppSettings[AppSettings.EncryptionKey]);
 
             var passwordLink = ApplicationHelpers.GetBaseURL() +
-                "/User/Account/ResetPassword?userNameAndDate=" + HttpUtility.UrlEncode(encryptedString);
+                "/User/User/ResetPassword?userNameAndDate=" + HttpUtility.UrlEncode(encryptedString);
 
             var email = new MailMessage();
 
