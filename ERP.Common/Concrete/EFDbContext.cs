@@ -12,7 +12,7 @@ namespace ERP.Common.Concrete
     public class EFDbContext : DbContext
     {
         public EFDbContext()
-            : base("ERPContextConnection")
+            : base(Consts.ERPContextConnection)
         { }
 
         public DbSet<User> Users { get; set; }

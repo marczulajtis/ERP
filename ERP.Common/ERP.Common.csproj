@@ -84,7 +84,7 @@
     <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EmailService.cs" />
-    <Compile Include="Concrete\PasswordAuthentication.cs" />
+    <Compile Include="Concrete\Encryption.cs" />
     <Compile Include="Helpers\PasswordResetHelper.cs" />
     <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\InitialConfig.cs">

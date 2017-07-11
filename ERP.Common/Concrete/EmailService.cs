@@ -25,20 +25,17 @@ namespace ERP.Common.Concrete
                 ConfigurationManager.AppSettings[AppSettings.EncryptionKey]);
 
             var passwordLink = ApplicationHelpers.GetBaseURL() +
-                "/User/User/ResetPassword?userNameAndDate=" + HttpUtility.UrlEncode(encryptedString);
+                Consts.PasswordLinkCommonPath + HttpUtility.UrlEncode(encryptedString);
 
             var email = new MailMessage();
 
             email.From = new MailAddress("mulanecka@gmail.com");
             email.To.Add(new MailAddress(user.Email));
 
-            email.Subject = "Password reset";
+            email.Subject = Consts.EmailSubject;
             email.IsBodyHtml = true;
 
-            email.Body += "<p> Request has been received to reset your password." +
-                " If you did not initiate this request, please ignore this email.</p>";
-            email.Body += "<p> Please click the following link " + passwordLink + " to reset your password </p>";
-            email.Body += "<br/> <p> This link will be active for 15 minutes from visiting it. </p>";
+            email.Body = Consts.ResetLinkBodyMessagePart1 + passwordLink + Consts.ResetLinkBodyMessagePart2;
 
             SmtpClient smtpClient = new SmtpClient();
 
